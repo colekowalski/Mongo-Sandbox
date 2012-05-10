@@ -14,12 +14,12 @@ echo "initializing replica primary"
 echo "rs.initiate()" | bin/mongo --port 30000 2>&1 > /dev/null
 
 # wait for primary to come online
-PRIMARIES=`echo "rs.status()" | mongo --port 30000 | grep PRIM | wc -l`
+PRIMARIES=`echo "rs.status()" | bin/mongo --port 30000 | grep PRIM | wc -l`
 while [ "$PRIMARIES" -lt "1" ]
 do
     echo "waiting for primary to come online"
     echo "rs.initiate()" | bin/mongo --port 30000 2>&1 > /dev/null
-    PRIMARIES=`echo "rs.status()" | mongo --port 30000 | grep PRIM | wc -l`
+    PRIMARIES=`echo "rs.status()" | bin/mongo --port 30000 | grep PRIM | wc -l`
     sleep 1
 done
 
