@@ -27,7 +27,7 @@ while [ $? -gt "0" ]
 do
     echo "waiting for mongos to come online"
     sleep 1
-    echo "exit" | bim/mongo 2>&1 > /dev/null
+    echo "exit" | bin/mongo 2>&1 > /dev/null
 done
 
 echo "db.runCommand( { addshard : 'sandbox1/$HOSTNAME:30000,$HOSTNAME:30001' } );" | bin/mongo localhost/admin 
